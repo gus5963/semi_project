@@ -5,6 +5,88 @@
     <title>Title</title>
 </head>
 <body>
-index page
+<div class="mbti_img"></div>
+<div class="mbti_profile">
+    {{mbti_id}}
+</div>
+<div class="rmd_type">
+    <button class="tour"></button>
+    <button class="movie"></button>
+    <button class="hobby"></button>
+</div>
+<div class="hobby_admin">
+    <div class="rmd_title">
+        <h1></h1>
+    </div>
+    <div class="rmd_contents">
+        <div class="rmd_content">
+            <a href=""> <img src=""></a>
+            <button class="heart"></button>
+            <p class="content_title"></p>
+        </div>
+        <div class="rmd_content">
+            <a href=""> <img src=""></a>
+            <button class="heart"></button>
+            <p class="content_title"></p>
+        </div>
+        <div class="rmd_content">
+            <a href=""> <img src=""></a>
+            <button class="heart"></button>
+            <p class="content_title"></p>
+        </div>
+        <div class="rmd_content">
+            <a href=""> <img src=""></a>
+            <button class="heart"></button>
+            <p class="content_title"></p>
+        </div>
+        <div class="rmd_content">
+            <a href=""> <img src=""></a>
+            <button class="heart"></button>
+            <p class="content_title"></p>
+        </div>
+    </div>
+</div>
+<div class="hobby_user">
+    <div class="rmd_title">
+        <h1></h1>
+    </div>
+    <div class="user_rmd_contents">
+        <div class="user_rmd_content">
+            <a href=""> <h2 class="title"></h2></a>
+            <button class="user_heart"></button>
+        </div>
+        <div class="user_rmd_content">
+            <a href=""> <h2 class="title"></h2></a>
+            <button class="user_heart"></button>
+        </div>
+        <div class="user_rmd_content">
+            <a href=""> <h2 class="title"></h2></a>
+            <button class="user_heart"></button>
+        </div>
+        <div class="user_rmd_content">
+            <a href=""> <h2 class="title"></h2></a>
+            <button class="user_heart"></button>
+        </div>
+        <div class="user_rmd_content">
+            <a href=""> <h2 class="title"></h2></a>
+            <button class="user_heart"></button>
+        </div>
+    </div>
+</div>
+{% if page_mbti == user_mbti %}
+<div class="input_rmd">
+    <h2></h2>
+    <form action="./rmdSubmit" method="POST">
+        {%csrf_token%}
+        <label></label>
+        <input name="title" placeholder="취미를 입력하세요" type="text">
+        <input type="submit" value="추천">
+    </form>
+</div>
+{% endif %}
+<div class="hobby_comment">
+    <p class="comment_user"></p>
+    <p class="comment_text"></p>
+</div>
 </body>
 </html>

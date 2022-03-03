@@ -15,8 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from MBTIgg import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('hobby/', include('hobbyApp.urls'))
+    path('', views.home, name="home"),
+    path('istj/', include('hobbyApp.urls')),
+    path('intp/', include('hobbyApp.urls'))
+
+
 ]
+
