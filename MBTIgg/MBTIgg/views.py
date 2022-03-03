@@ -9,5 +9,5 @@ def home(request):
     context = {
         'mbtis':mbtis
     }
-    print('mbti',mbtis)
+
     return render(request, 'home.html', context)

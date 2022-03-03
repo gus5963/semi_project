@@ -8,12 +8,13 @@ from mbtiApp.models import *
 def index(request):
     print('✅ GET Hobby Index 🚀')
     mbti_id = request.GET['mbti']
+    hobbys = Hobby.objects.all()
     context={
-        'mbti_id' : mbti_id
+        'mbti_id' : mbti_id,
+        'hobbys' : hobbys
     }
     return render(request, 'hobby/index.html',context)
 
 
 def rmdSubmit(request):
     print('✅ GET Hobby Submit 🚀')
-    return redirect('hobby_index')
