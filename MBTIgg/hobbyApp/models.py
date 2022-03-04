@@ -9,6 +9,7 @@ class Hobby(models.Model):
     title = models.CharField(max_length=50)
     user_id = models.ForeignKey(User, on_delete=models.CASCADE, db_column='user_id', default='admin')
     info = models.TextField(null=True)
+    photo = models.TextField(null=True)
 
 
 class HobbyComment(models.Model):

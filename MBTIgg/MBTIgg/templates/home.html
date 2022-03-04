@@ -1,14 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% include 'header.html' %}
+
+{% block content %}
+
 {% for mbti in mbtis%}
 <div>
     <a href="./{{mbti.mbti_id}}?mbti={{mbti.mbti_id}}">{{mbti.mbti_id}}</a>
 </div>
 {% endfor %}
-</body>
-</html>
+
+{% endblock %}
+
+{% include 'footer.html'%}
