@@ -25,7 +25,7 @@
                     <button class="heart">heart</button>
                     <span class="content_title">{{hobby.title}}</span>
                 </div>
-            </div>
+        </div>
     {% endfor %}
 </div>
 <div class="hobby_user">
@@ -41,7 +41,8 @@
         </div>
     {% endfor %}
 </div>
-{% if page_mbti == user_mbti %}
+{% for user in users%}
+{% if mbti_id == user.mbti_id %}
 <div class="input_rmd">
     <h2></h2>
     <form action="./rmdSubmit" method="POST">
@@ -52,6 +53,7 @@
     </form>
 </div>
 {% endif %}
+{%endfor%}
 <div class="hobby_comment">
     <p class="comment_user"></p>
     <p class="comment_text"></p>
