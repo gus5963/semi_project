@@ -13,14 +13,15 @@ def index(request):
     mbti_table = Mbti.objects.get(mbti_id=mbti_id)
     user_mbti=request.session.get('user_mbti')
     user_name=request.session.get('user_name')
+    # name = Hobby.objects.a(user_id='admin')
+    print('⛔️ request check :',hobbys[2].user_id)
     context={
         'mbti_id' : mbti_id,
         'hobbys' : hobbys,
         'mbti_table' : mbti_table,
         'user_mbti' : user_mbti,
-        'user_name': user_name
+        'user_name': user_name,
     }
-
     return render(request, 'hobby.html',context)
 
 

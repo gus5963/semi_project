@@ -1,13 +1,19 @@
-{% include 'header.html' %}
-
-{% block content %}
-
+<!DOCTYPE html>
+{% load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://unpkg.com/mvp.css">
+</head>
+<body>
 {% for mbti in mbtis%}
 <div>
     <a href="./{{mbti.mbti_id}}?mbti={{mbti.mbti_id}}">{{mbti.mbti_id}}</a>
 </div>
 {% endfor %}
 
-{% endblock %}
+</body>
+</html>
 
-{% include 'footer.html'%}
+

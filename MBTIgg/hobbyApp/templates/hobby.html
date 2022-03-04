@@ -54,24 +54,24 @@
             <div class="container">
               <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                 {% for hobby in hobbys %}
-                {% if hobby.user_id is "admin" %}
-                <div class="col">
-                  <div class="card shadow-sm">
-                    <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
-                      <image xlink:href="{{hobby.photo}}" x="0"y="0" height="225" width="100%"/>
-                    </svg>
-                    <div class="card-body">
-                      <p class="card-text">{{hobby.title}}</p>
-                      <div class="d-flex justify-content-between align-items-center">
-                        <div class="btn-group">
-                          <button type="button" class="btn btn-sm btn-outline-secondary">HEART</button>
+                  <div class="col">
+                    <div class="card shadow-sm">
+                      <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+                        <a href="{{hobby.info}}">
+                          <image xlink:href="{{hobby.photo}}" x="0"y="0" height="225" width="100%"/>
+                        </a>
+                      </svg>
+                      <div class="card-body">
+                        <p class="card-text">{{hobby.title}}</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                          <div class="btn-group">
+                            <button type="button" class="btn btn-sm btn-outline-secondary">HEART</button>
+                          </div>
+                          <small class="text-muted">200</small>
                         </div>
-                        <small class="text-muted">200</small>
                       </div>
                     </div>
                   </div>
-                </div>
-                {% endif %}
                 {% endfor %}
               </div>
             </div>
@@ -80,19 +80,19 @@
           <table class="table">
     <thead>
       <tr>
-        <th scope="col">#</th>
         <th scope="col">Name</th>
         <th scope="col">Content</th>
         <th scope="col">Heart</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-      </tr>
+      {% for hobby in hobbys %}
+        <tr>
+          <th scope="row">{{user.name}}</th>
+          <td>{{hobby.title}}</td>
+          <td>300</td>
+        </tr>
+      {% endfor%}
     </tbody>
   </table>
     </div>
