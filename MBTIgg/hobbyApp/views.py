@@ -21,7 +21,7 @@ def index(request):
         'user_name': user_name
     }
 
-    return render(request, 'index.html',context)
+    return render(request, 'hobby.html',context)
 
 
 def rmdSubmit(request):

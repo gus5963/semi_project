@@ -1,11 +1,6 @@
-
-<!--{% include 'header.html' %}-->
-
-<!--{% block content %}-->
-
-
 <!doctype html>
 {% load static%}
+
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -13,11 +8,11 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.88.1">
-    <title>Album example · Bootstrap v5.1</title>
+    <title>{{mbti_id}}</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/album/">
 
-
+    
 
     <!-- Bootstrap core CSS -->
     <link href="{% static '/assets/dist/css/bootstrap.min.css' %}" rel="stylesheet">
@@ -38,74 +33,80 @@
       }
     </style>
 
-
+    
   </head>
-<body>
-<header>
-<div class="mbti_img"></div>
-<div class="mbti_profile">
-    <h1><span style="text-transform:uppercase">{{mbti_id}}</span></h1>
-</div>
-<div class="rmd_type">
-    <button class="tour">여행지</button>
-    <button class="movie">영화</button>
-    <button class="hobby">취미</button>
-</div>
-</header>
-<main>
-    <div class="hobby_admin">
-    <div class="rmd_title">
-        <h1></h1>
-    </div>
-    {% for hobby in hobbys %}
-        <div class="rmd_contents">
-                <div class="rmd_content">
-                    <a href="{{hobby.info}}"> <img src="https://w.namu.la/s/511efd44f5762c2128796b7fc91a16ecae323f6c1cda8c6210843b364485b9efbc86550279947dbcadf0a97665107b2a339ff7ec5eaf33c248669ee60b8fbc6729bdfa75e38d7d7f64c00d0196fe7aca1514b9f5e1bfb429b3c7e4244289c0425fef7dc2a5361aae0c9910bd0e4feec4"></a>
-                    <button class="heart">heart</button>
-                    <span class="content_title">{{hobby.title}}</span>
+  <body>
+  <main>
+    <section class="py-5 text-center container bg-light">
+      <div class="row py-lg-5">
+        <div class="col-lg-6 col-md-8 mx-auto">
+          <h1 class="fw-light" style="text-transform:uppercase">{{mbti_id}}</h1>
+          <p class="lead text-muted">{{mbti_table.profile}}</p>
+          <p>
+            <a href="#" class="btn btn-primary my-2">여행지</a>
+            <a href="#" class="btn btn-primary my-2">영화</a>
+            <a href="#" class="btn btn-primary my-2">취미</a>
+          </p>
+        </div>
+      </div>
+    </section>
+    <div class="album py-5">
+            <div class="container">
+              <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                {% for hobby in hobbys %}
+                {% if hobby.user_id is "admin" %}
+                <div class="col">
+                  <div class="card shadow-sm">
+                    <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+                      <image xlink:href="{{hobby.photo}}" x="0"y="0" height="225" width="100%"/>
+                    </svg>
+                    <div class="card-body">
+                      <p class="card-text">{{hobby.title}}</p>
+                      <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+                          <button type="button" class="btn btn-sm btn-outline-secondary">HEART</button>
+                        </div>
+                        <small class="text-muted">200</small>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-        </div>
-    {% endfor %}
-</div>
-<div class="hobby_user">
-    <div class="rmd_title">
-        <h1></h1>
-    </div>
-    {% for hobby in hobbys %}
-        <div class="user_rmd_contents">
-            <div class="user_rmd_content">
-                <a href="{{hobby.info}}"> <h2 class="title">{{hobby.title}}</h2></a>
-                <button class="user_heart">heart</button>
+                {% endif %}
+                {% endfor %}
+              </div>
             </div>
-        </div>
-    {% endfor %}
-</div>
-{% for user in users%}
-{% if mbti_id == user.mbti_id %}
-<div class="input_rmd">
-    <h2></h2>
-    <form action="./rmdSubmit" method="POST">
-        {%csrf_token%}
-        <label>취미 이름 : </label>
-        <input name="title" placeholder="취미를 입력하세요" type="text">
-        <input type="submit" value="추천">
+          </div>
+    <div class="user_rmd py-5 container">
+          <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Content</th>
+        <th scope="col">Heart</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+      </tr>
+    </tbody>
+  </table>
+    </div>
+    <div class="hobby_comment py-5 container">
+    <form action="#" method="POST">
+      {% csrf_token%}
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">{{user_name}}</label>
+        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="width:80%">
+      </div>
+      <button type="submit" class="btn btn-primary">등록</button>
     </form>
-</div>
-{% endif %}
-{%endfor%}
-<div class="hobby_comment">
-    <p class="comment_user"></p>
-    <p class="comment_text"></p>
-</div>
-<div>
-    <form>
-        <input name="user_name" type="text">
-        <input name="user_comment" type="text" placeholder="내용을 입력하세요">
-        <input type="submit" value="등록">
-    </form>
-</div>
-</main>
-
-{% endblock %}
-
-{% include 'footer.html'%}
+    </div>
+  </main>
+  <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
