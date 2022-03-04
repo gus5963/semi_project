@@ -13,8 +13,10 @@ def index(request):
     mbti_table = Mbti.objects.get(mbti_id=mbti_id)
     user_mbti=request.session.get('user_mbti')
     user_name=request.session.get('user_name')
-    # name = Hobby.objects.a(user_id='admin')
-    print('⛔️ request check :',hobbys[2].user_id)
+    # join에서 해당 user_id를 갖고 있는 사람의 이름을 찾는 방법!!!!!!!!
+    hobby_all = Hobby.objects.select_related('user_id').all()
+    for hobby in hobby_all:
+        print(hobby.user_id.name)
     context={
         'mbti_id' : mbti_id,
         'hobbys' : hobbys,
